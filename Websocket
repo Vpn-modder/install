@@ -1,5 +1,5 @@
 cd /var/local
-curl -skLO -H "Authorization: token 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" -H "Accept: application/vnd.github.v3.raw" "https://raw.githubusercontent.com/Vpn-modder/install/main/80.py"
+curl -skLO -H "Authorization: token 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" -H "Accept: application/vnd.github.v3.raw" "https://raw.githubusercontent.com/Vpn-modder/install/main/80.py"
 chmod +x /var/local/*.py
 cd
 
