@@ -1,9 +1,9 @@
 Create_DNS(){
  printf "%b\n" "[\e[32mInfo\e[0m]\e[97m running DNS Maker..\e[0m"
- GLOBAL_API_KEY="5044919952962a06c9f6d1d8b0aa5d3fc761a"
- CLOUDFLARE_EMAIL="info.freenetcafe@gmail.com"
- DOMAIN_NAME_TLD="fcafessh.net"
- DOMAIN_ZONE_ID="fc68b633c398ccae125dd159c68291e3"
+ GLOBAL_API_KEY="a3c350a367192bad8e0e90d456aad9d732afd"
+ CLOUDFLARE_EMAIL="bunolajrc1989@gmail.com"
+ DOMAIN_NAME_TLD="privatessh.tech"
+ DOMAIN_ZONE_ID="fdd2f1692bcf6c068f569652b26c3252"
 
  C2ISO="$(curl -4skL https://ipinfo.io/country)"
  COUNTER="$(head /dev/urandom | tr -dc 'a-f0-9' | fold -w 4 | head -n1)"
