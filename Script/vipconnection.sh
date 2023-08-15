@@ -2,10 +2,10 @@
 error_reporting(E_ERROR | E_PARSE);
 ini_set('display_errors', '1');
 
-$DB_host = '174.138.190.150';
-$DB_user = 'mhixvpnn_gundam5345';
-$DB_pass = '5345Classofclans';
-$DB_name = 'mhixvpnn_kawa5345';
+$DB_host = '156.67.222.123';
+$DB_user = 'u217294747_oi';
+$DB_pass = '26352oitesT';
+$DB_name = 'u217294747_iotest';
 
 $mysqli = new MySQLi($DB_host,$DB_user,$DB_pass,$DB_name);
 if ($mysqli->connect_error) {
