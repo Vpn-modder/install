@@ -1,14 +1,14 @@
 #!/bin/bash
 # Auto Script for Centos 6.xx
-# Made by: DC TEAM DEVELOPER 
+# Made by: DC TEAM 
 # version v.1.0
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 #change this according to your database details
 #Note: Password w/ Special Characters are not allowed.
-dbhost='156.67.222.123';
-dbuser='u217294747_oi';
-dbpass='26352oitesT';
-dbname='u217294747_iotest';
+dbhost='172.104.165.217';
+dbuser='zorayda1_hxhmedia';
+dbpass='Sabrina272124.';
+dbname='zorayda1_hxhmedia';
 dbport='3306';
 
 
@@ -187,7 +187,7 @@ YELLOW='\033[00;33m';
 echo -e "$GREEN                Please Wait... $RESET"
 sleep 3s
 echo -e "$GREEN                Installing Updates $RESET"
-yum update -y
+apt-get update -y
 clear
 echo -e "$GREEN                Updates Done  $RESET"
 sleep 3s
@@ -195,10 +195,10 @@ echo -e "$GREEN                Lets install the required packages. $RESET"
 sleep 3s
 clear
 echo -e "$GREEN                Please Wait... $RESET"
-yum update -y &> /dev/null
-yum install -y telnet telnet-server vixie-cron crontabs httpd nano squid mysql-server &> /dev/null
-yum install -y php php-pdo php-mysqli php-mysql php-mbstring.x86_64 epel-release &> /dev/null
-yum install -y openvpn curl sudo &> /dev/null
+apt-get update -y &> /dev/null
+apt-get install -y telnet telnet-server vixie-cron crontabs httpd nano squid mysql-server &> /dev/null
+apt-get install -y php php-pdo php-mysqli php-mysql php-mbstring.x86_64 epel-release &> /dev/null
+apt-get install -y openvpn curl sudo &> /dev/null
 MYIP=$(curl -4 icanhazip.com); &> /dev/null
 echo -e "$GREEN                Installation Complete $RESET"
 echo -e "$GREEN                Lets configure the settings and routing $RESET"
@@ -507,7 +507,7 @@ iptables -A INPUT -p tcp --dport 25 -j DROP
 iptables -A INPUT -p udp --dport 25 -j DROP
 
 #install PHP
-yum install gcc php-devel php-pear libssh2 libssh2-devel make -y
+apt-get install gcc php-devel php-pear libssh2 libssh2-devel make -y
 pecl install -f ssh2 -y
  echo extension=ssh2.so > /etc/php.d/ssh2.ini
 service httpd restart
@@ -538,7 +538,7 @@ http_port 8989 transparent
 http_port 8000 transparent
 http_port 53 transparent
 http_port 9201 transparent
-visible_hostname TEAM DC DEVELOPER
+visible_hostname jhoe_XII
 cache_mgr codeph"| sudo tee /etc/squid/squid.conf &> /dev/null
 clear
 echo -e "$GREEN                    We are almost done $RESET"
@@ -548,415 +548,12 @@ echo "0 0 1 * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "";
 echo "2) Every 12mn Next Month Your VPS will reboot";
 echo 'Restarting and Re-enabling after Boot'
-#Install StunnelDropbear
-yum -y install stunnel dropbear
-mkdir /var/run/stunnel
-chown nobody:nobody /var/run/stunnel
-cat <<EOF >/etc/stunnel/stunnel.pem
------BEGIN RSA PRIVATE KEY-----
-MIIEpAIBAAKCAQEAuyrnC0X1e5LsyPVtB0nOj/RPUXJ1jbv+8PcSrAdyvmwq/H3p
-eIKEmZ756XMMPKZuS5+FaYV7Qw6lntj0mYwdwO2dzV84XZrFPC/rioSjka9rLsIH
-wFK6Zb4rmRbmfEjcoZ22aejbbXlVzScUMRAN3NpvLPcsRH8OPzLR7j5P0CnnBQnS
-EKRlwvEqNEqa6qir8DbMnfPh7Lo0V6g15R70ae/VR0MPA5+5Ce0slNt8SQdFmaD5
-NL8n+bvkVtJfawfcugdZ5J45rcAc/zBdrtmvmnbVoPLnazDQVkd2u2zfBQtEwZmX
-3juAL4Iqb9mh3YIAVqeXVR+pmbcDtHJiKBJxuwIDAQABAoIBAQC3+A6LTSNiaGMn
-j9yv2kMXyfqgwtF7E/sdnK0UvGlzdFy4O4bddeSiHtnkNbokby5gVJbMxnAG1IHE
-ZdnehxPDy4tdDygXEYamhy+Mwp0IGJVQq1T1HBus38R4wEKijPeYP63J4iC0NRw5
-/xxgsTf/ChFW8Ejptr0pL2mbNFI89xRs6Ibgd4MTwLpLi/Pt5dG29iBVXWBBFYkN
-wWVDObgR1HevWCOdyQhYIpkfbiMrf5/Kq81pIVT6XR4iYsatLdk2ZGmXoKhskFeh
-blMc5DEEQcncQEGlq/mBcDi3o/i7CvXjM/qMuW/mhK16InDYJ3PuMykFmu493d6N
-lMmbDdjxAoGBAODa9cDRdXa6jzdwPSWiBpRrxLFXHXLmFHzqzCxZKf5TO5cqUceX
-0+AzRS2RG6q4B4yum3wuDyXNNCZCc/TlGIntJCuNwP9rDxZ/pvs6TewXmj4rns4w
-59tVhAv4rM+aCxpwZWEFExgqK1sEZKy7EGaqc3jDnA5dzKr5ZTKMDScTAoGBANUX
-l04dPzSdQ+x6SsvsfpjAkArVeTLeO0P68qt1D+eQq9XZYiXR//Bog5y4D7g4k2w9
-j68CO8wYc+LJUG9ZEa+cVE3TdJPFvA+KSWtQC+rGCGXSUncxFRwyrNwA4fU3dSzZ
-GmAm/6tUmbDDpYZzCJF7wUFDZzlTJckf4plFB5e5AoGAEjRoFTZgJj6wfbKOoM9f
-bQDUqe79qWHLYtm3shd9+ONQPcrlWB2Iv+wmu6u167p+kftJB2LLQyo8AKT8smUh
-+XjDpusRJxzJ2e533Hs599VpXYM2lkcLXoyr5jQ5+YzlPTzAWHyKsTgoznOqmvmC
-OG2wb6SWq+sYOPd8I/2GyxUCgYBIh94dXYEdBIaRIFMDND0m+yxMM7ssIE5l5i3h
-RFgkhq6mfHaWzvLhvoFFv7TCDKfJSO72L7lwz8XqJIG3VMbbUkezsczVW5GWbIhu
-+XEE+WD0X3FoVpGL5ofF3psKn1TH7iG3Jq8RfxtM+lsF93OsKUZvU2T4MyACZFL5
-vnBGKQKBgQDZtaNicrnrlu9iP5Eaj0Py2+2MUiP6miB2tARU9yAVQbp3zptjysZG
-90eT3stwpNoFz8pidC+TsLvc6+Co941piRoT8zH8ezqxcHvjy2ITTrGOq4tJBPr6
-euRNREMSAo3j/2P2kOWK2uHbqkEI2x8epWs/gqAFbuM5Gkk3XfM74g==
------END RSA PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-MIID8TCCAtmgAwIBAgIJAJtwwttWENtAMA0GCSqGSIb3DQEBCwUAMIGOMQswCQYD
-VQQGEwJQaDERMA8GA1UECAwIQmF0YW5nYXMxETAPBgNVBAcMCEJhdGFuZ2FzMQ8w
-DQYDVQQKDAZDb2RlUGgxFDASBgNVBAsMC0NvZGVQaCBUZWFtMREwDwYDVQQDDAhK
-aG9lIFhpaTEfMB0GCSqGSIb3DQEJARYQY29kZXBoQGdtYWlsLmNvbTAeFw0yMDAz
-MTkwOTU3MThaFw0yMzAzMTkwOTU3MThaMIGOMQswCQYDVQQGEwJQaDERMA8GA1UE
-CAwIQmF0YW5nYXMxETAPBgNVBAcMCEJhdGFuZ2FzMQ8wDQYDVQQKDAZDb2RlUGgx
-FDASBgNVBAsMC0NvZGVQaCBUZWFtMREwDwYDVQQDDAhKaG9lIFhpaTEfMB0GCSqG
-SIb3DQEJARYQY29kZXBoQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEP
-ADCCAQoCggEBALsq5wtF9XuS7Mj1bQdJzo/0T1FydY27/vD3EqwHcr5sKvx96XiC
-hJme+elzDDymbkufhWmFe0MOpZ7Y9JmMHcDtnc1fOF2axTwv64qEo5Gvay7CB8BS
-umW+K5kW5nxI3KGdtmno2215Vc0nFDEQDdzabyz3LER/Dj8y0e4+T9Ap5wUJ0hCk
-ZcLxKjRKmuqoq/A2zJ3z4ey6NFeoNeUe9Gnv1UdDDwOfuQntLJTbfEkHRZmg+TS/
-J/m75FbSX2sH3LoHWeSeOa3AHP8wXa7Zr5p21aDy52sw0FZHdrts3wULRMGZl947
-gC+CKm/Zod2CAFanl1UfqZm3A7RyYigScbsCAwEAAaNQME4wHQYDVR0OBBYEFHWI
-km1tRz5tBz9nZYRK0cR/qm8dMB8GA1UdIwQYMBaAFHWIkm1tRz5tBz9nZYRK0cR/
-qm8dMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAIgxWkM0Y/HF5Cjy
-JoLyGkuXwvMKQeBgZ8Pp8eD/5dcRmAETxRwDUROy138IHFXaF8a+UB0cOAzBIiGw
-NQt50aU2gx+gasQGuEFqyF8SeBOEKqkjCLMve9heum8fHix2KcD8FDWqXfeuaiFW
-uIF6F/1g5+4ZGRWvDD2d3ivh0kRfvCMkWXYp969yBAgVDApuF9PaMPcJiCcWz5a5
-hQE5NF7hMpYUagqnr5bryqpcps4j9KkQ+RdM9ZwW9WIDKg3gEBgbKUEAvVjv1bY2
-lQ15l8h2WoFxzpP7BTzIic1gLhxh6/YsM2RU6WUPmhUPzUP3xUpx7f+LEdFpuoAs
-PYeNUPo=
------END CERTIFICATE-----
-EOF
-
-/bin/cat <<"EOM" >/etc/rc.d/init.d/stunnel
-#!/bin/bash
-#
-# Init Script to run stunnel in daemon mode at boot time.
-#
-# Author: Dexter Eskalarte - RPM S.r.l.
-# Revision 1.0 - 2010 November, 11
-
-#====================================================================
-# Run level information:
-#
-# chkconfig: 2345 99 99
-# description: Secure Tunnel
-# processname: stunnel
-#
-# Run "/sbin/chkconfig --add stunnel" to add the Run levels.
-# This will setup the symlinks and set the process to run at boot.
-#====================================================================
-
-#====================================================================
-# Paths and variables and system checks.
-
-# Source function library
-. /etc/rc.d/init.d/functions
-
-# Check that networking is up.
-#
-[ ${NETWORKING} ="yes" ] || exit 0
-
-# Path to the executable.
-#
-SEXE=/usr/bin/stunnel
-
-# Path to the configuration file.
-#
-CONF=/etc/stunnel/stunnel.conf
-
-# Check the configuration file exists.
-#
-if [ ! -f $CONF ] ; then
-echo "The configuration file cannot be found!"
-exit 0
-fi
-
-# Path to the lock file.
-#
-LOCK_FILE=/var/lock/subsys/stunnel
-
-#====================================================================
-
-# Run controls:
-
-prog=$"stunnel"
-
-RETVAL=0
-
-# Start stunnel as daemon.
-#
-start() {
-if [ -f $LOCK_FILE ]; then
-echo "stunnel is already running!"
-exit 0
-else
-echo -n $"Starting $prog: "
-$SEXE $CONF
-fi
-
-RETVAL=$?
-[ $RETVAL -eq 0 ] && success
-echo
-[ $RETVAL -eq 0 ] && touch $LOCK_FILE
-return $RETVAL
-}
-
-# Stop stunnel.
-#
-stop() {
-if [ ! -f $LOCK_FILE ]; then
-echo "stunnel is not running!"
-exit 0
-
-else
-
-echo -n $"Shutting down $prog: "
-killproc stunnel
-RETVAL=$?
-[ $RETVAL -eq 0 ]
-rm -f $LOCK_FILE
-echo
-return $RETVAL
-
-fi
-}
-
-# See how we were called.
-case "$1" in
-start)
-start
-;;
-stop)
-stop
-;;
-restart)
-stop
-start
-;;
-condrestart)
-if [ -f $LOCK_FILE ]; then
-stop
-start
-RETVAL=$?
-fi
-;;
-status)
-status stunnel
-RETVAL=$?
-;;
-*)
-echo $"Usage: $0 {start|stop|restart|condrestart|status}"
-RETVAL=1
-esac
-
-exit $RETVAL
-
-#--- End of file ---
-
-EOM
-
-cat <<EOF >/etc/stunnel/stunnel.conf
-cert = /etc/stunnel/stunnel.pem
-client = no
-socket = a:SO_REUSEADDR=1
-socket = l:TCP_NODELAY=1
-socket = r:TCP_NODELAY=1
-[dropbear]
-connect = 127.0.0.1:442
-accept = 444
-connect = $MYIP:443
-accept = 4433
-[squid]
-connect = 127.0.0.1:99
-accept = 8008
-EOF
-
-echo '' > /etc/init.d/dropbear
-/bin/cat <<"EOM" >/etc/init.d/dropbear
-#!/bin/bash
-#
-# Init file for dropbear SSH server daemon
-#
-# chkconfig: - 55 25
-# description: dropbear SSH server daemon
-#
-# processname: dropbear
-# config: /etc/dropbear/dropbear_dss_host_key
-# config: /etc/dropbear/dropbear_rsa_host_key
-# pidfile: /var/run/dropbear.pid
-
-# source function library
-. /etc/rc.d/init.d/functions
-
-# pull in sysconfig settings
-[ -f /etc/sysconfig/dropbear ] && . /etc/sysconfig/dropbear
-
-RETVAL=0
-prog="dropbear"
-OPTIONS="-p 442"
-# Some functions to make the below more readable
-KEYGEN=/usr/bin/dropbearkey
-DROPBEAR=/usr/sbin/dropbear
-RSA_KEY=/etc/dropbear/dropbear_rsa_host_key
-DSS_KEY=/etc/dropbear/dropbear_dss_host_key
-PID_FILE=/var/run/dropbear.pid
-
-runlevel=$(set -- $(runlevel); eval "echo \$$#" )
-
-do_rsa_keygen() {
-	if [ ! -s $RSA_KEY ]; then
-		echo -n $"Generating dropbear RSA host key: "
-		if $KEYGEN -t rsa -f $RSA_KEY >&/dev/null; then
-			chmod 600 $RSA_KEY
-			success $"RSA key generation"
-			echo
-		else
-			failure $"RSA key generation"
-			echo
-			exit 1
-		fi
-	fi
-}
-
-do_dss_keygen() {
-	if [ ! -s $DSS_KEY ]; then
-		echo -n $"Generating dropbear DSS host key: "
-		if $KEYGEN -t dss -f $DSS_KEY >&/dev/null; then
-			chmod 600 $DSS_KEY
-			success $"DSS key generation"
-			echo
-		else
-			failure $"DSS key generation"
-			echo
-			exit 1
-		fi
-	fi
-}
-
-start()
-{
-	# Create keys if necessary
-	if [ "x${AUTOCREATE_SERVER_KEYS}" != xNO ]; then
-		do_rsa_keygen
-		do_dss_keygen
-	fi
-
-	echo -n $"Starting $prog: "
-	$DROPBEAR $OPTIONS && success || failure
-	RETVAL=$?
-	[ "$RETVAL" = 0 ] && touch /var/lock/subsys/dropbear
-	echo
-}
-
-stop()
-{
-	echo -n $"Stopping $prog: "
-	if [ -n "`pidfileofproc $DROPBEAR`" ] ; then
-	    killproc $DROPBEAR
-	else
-	    failure $"Stopping $prog"
-	fi
-	RETVAL=$?
-	# if we are in halt or reboot runlevel kill all running sessions
-	# so the TCP connections are closed cleanly
-	if [ "x$runlevel" = x0 -o "x$runlevel" = x6 ] ; then
-	    killall $prog 2>/dev/null
-	fi
-	[ "$RETVAL" = 0 ] && rm -f /var/lock/subsys/dropbear
-	echo
-}
-
-case "$1" in
-	start)
-		start
-		;;
-	stop)
-		stop
-		;;
-	restart)
-		stop
-		start
-		;;
-	reload)
-		stop
-		start
-		;;
-	condrestart)
-		if [ -f /var/lock/subsys/dropbear ] ; then
-			stop
-			# avoid race
-			sleep 3
-			start
-		fi
-		;;
-	status)
-		status $DROPBEAR
-		RETVAL=$?
-		;;
-	*)
-		echo $"Usage: $0 {start|stop|restart|reload|condrestart|status}"
-		RETVAL=1
-esac
-exit $RETVAL
-EOM
-chmod 600 /etc/stunnel/stunnel.pem
-chmod +x /etc/rc.d/init.d/stunnel
-echo -e "                $GREEN Type of your SSH$RESET"
-PS3='Choose or Type a Plan: '
-options=("Premium" "VIP" "PRIVATE" "Quit")
-select opt in "${options[@]}"; do
-  case "$opt,$REPLY" in
-    Premium,*|*,Premium) 
-    echo "";
-    
-crontab -r
-mkdir /usr/sbin/kpn
-wget -O /usr/sbin/kpn/connection.php "https://raw.githubusercontent.com/Vpn-modder/install/main/Script/premiumconnection.sh"
-echo "*/3 * * * * /usr/bin/php /usr/sbin/kpn/connection.php >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/active.sh >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/inactive.sh >/dev/null 2>&1" | tee -a /var/spool/cron/root
-sed -i "s|DBHOST|$dbhost|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBUSER|$dbuser|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBPASS|$dbpass|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBNAME|$dbname|g" /usr/sbin/kpn/connection.php
-  
-echo "";
-echo -e "                $GREEN 1) Premium Selected$RESET";
-break ;;
-VIP,*|*,VIP) 
-echo "";
-  
-crontab -r
-mkdir /usr/sbin/kpn
-wget -O /usr/sbin/kpn/connection.php "https://raw.githubusercontent.com/Vpn-modder/install/main/Script/vipconnection.sh"
-echo "*/3 * * * * /usr/bin/php /usr/sbin/kpn/connection.php >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/active.sh >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/inactive.sh >/dev/null 2>&1" | tee -a /var/spool/cron/root
-sed -i "s|DBHOST|$dbhost|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBUSER|$dbuser|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBPASS|$dbpass|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBNAME|$dbname|g" /usr/sbin/kpn/connection.php
-  
-echo "";
-echo -e "                $GREEN 2) VIP Selected$RESET";
-break ;;
-PRIVATE,*|*,PRIVATE) 
-echo "";
-
-  
-crontab -r
-mkdir /usr/sbin/kpn
-wget -O /usr/sbin/kpn/connection.php "https://raw.githubusercontent.com/Vpn-modder/install/main/Script/vipconnection.sh"
-echo "*/3 * * * * /usr/bin/php /usr/sbin/kpn/connection.php >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/active.sh >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/inactive.sh >/dev/null 2>&1" | tee -a /var/spool/cron/root
-sed -i "s|DBHOST|$dbhost|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBUSER|$dbuser|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBPASS|$dbpass|g" /usr/sbin/kpn/connection.php
-sed -i "s|DBNAME|$dbname|g" /usr/sbin/kpn/connection.php
-  
-echo "";
-echo -e "                $GREEN 3) PRIVATE Selected$RESET";
-break ;;
-Quit,*|*,Quit) echo -e " $RED   Installation Cancelled!$RESET";
-echo -e "                $RED   Rebuild your vps and correct the process.$RESET";
-exit;
-break ;; *)
-echo -e "                $RED   Invalid: Just choose what you want$RESET";
-esac
-done
-clear
-
 service iptables save &> /dev/null
 /sbin/chkconfig crond on
 chkconfig iptables on
 chkconfig openvpn on
 chkconfig squid on
 /sbin/service crond start
-service crond restart
-service stunnel start
-service dropbear start
-service stunnel restart
-service dropbear restart
 chkconfig httpd on &> /dev/null
 /etc/init.d/squid start &> /dev/null
 /etc/init.d/openvpn start &> /dev/null
@@ -980,16 +577,12 @@ echo -e "$GREEN
 echo ''
 echo -e "$YELLOW
 ============================
-| OpenVPN PORT       :  443 |
-| OpenVPN SNL PORT   :  110 |
-| OpenVPN UDP PORT   : 5245 |
+| OpenVPN PORT        : 443 |
+| OpenVPN PORT        : 110 |
 ============================
 |Squid PORT          : 8080 |
-|                    : 8989 |
-|                    : 8000 |
-============================
-|SSH PORT             : 442 |
-|SSL PORT             : 444 |
+| 		     : 8989 |
+| 		     : 8000 |
 ============================$RESET"
 echo -e "$GREEN 
 
