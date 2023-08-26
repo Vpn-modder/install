@@ -1,8 +1,17 @@
 {
-  "listen": ":36712",
-  "stream_buffer": 33554432,
-  "receive_buffer": 83886080,
-  "auth": {
-    "mode": "passwords"
-  }
+  "obfs": "",
+  "up_mbps": 1,
+  "down_mbps": 2,
+  "retry": 3,
+  "retry_interval": 1,
+  "socks5": {
+    "listen": "127.0.0.1:1080"
+  },
+  "http": {
+    "listen": "127.0.0.1:8989"
+  },
+  "insecure": true,
+  "ca": "",
+  "recv_window_conn": 196608,
+  "recv_window": 491520
 }
